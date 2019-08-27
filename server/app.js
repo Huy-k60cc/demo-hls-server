@@ -6,8 +6,8 @@ const express = require('express'),
     flash = require('connect-flash'),
     session = require('express-session'),
     sessionFileStore = require('session-file-store')(session),
-    passport = require('./server/auth/passport'),
-    config = require('./server/config'),
+    passport = require('./auth/passport'),
+    config = require('./config'),
     port = config.server.port,
     app = express();
 mongoose.connect('mongodb://127.0.0.1/live', {useNewUrlParser: true});
@@ -33,8 +33,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/login', require('./server/routes/login'));
-app.use('/register', require('./server/routes/register'));
+app.use('/login', require('./routes/login'));
+app.use('/register', require('./routes/register'));
 
 app.listen(port, async () => {
     console.log(`HLS listening on port ${port}`);
