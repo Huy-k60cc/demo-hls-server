@@ -13,7 +13,7 @@ passport.deserializeUser((obj, cb) => {
 });
 
 passport.use('register', new LocalStrategy({
-    emailField: 'email',
+    usernameField: 'email',
     passwordField: 'password',
     passReqToCallback: true,
 }, async (req, email, password, done) => {
